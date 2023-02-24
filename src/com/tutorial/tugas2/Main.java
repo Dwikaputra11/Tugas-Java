@@ -62,14 +62,10 @@ public class Main {
         }
 
         System.out.println("Vowel(" + vowelChar.size() + "): ");
-        vowelChar.forEach((k , n) -> {
-            System.out.println(" -" + k + ": " + n);
-        });
+        vowelChar.forEach((k , n) -> System.out.println(" -" + k + ": " + n));
 
         System.out.println("Consonant(" + consonantChar.size() + "): ");
-        consonantChar.forEach((k , n) ->{
-            System.out.println(" -" + k + ": " + n);
-        });
+        consonantChar.forEach((k , n) -> System.out.println(" -" + k + ": " + n));
 
         System.out.println("Spacer: " + space);
     }
