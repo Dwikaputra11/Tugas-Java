@@ -47,20 +47,14 @@ public class Main {
         for(char c: strArray){
             if(vowel.contains(String.valueOf(c))){
                 totalVowel++;
-                try {
-                    vowelChar.put(c , vowelChar.get(c) + 1);
-                }catch (NullPointerException e){
-                    vowelChar.put(c, 1);
-                }
+                if(vowelChar.containsKey(c))  vowelChar.put(c , vowelChar.get(c) + 1);
+                else vowelChar.put(c, 1);
             }else{
                 if(c == ' ') space++;
                 else{
                     totalCons++;
-                    try {
-                        consonantChar.put(c , consonantChar.get(c) + 1);
-                    }catch (NullPointerException e){
-                        consonantChar.put(c, 1);
-                    }
+                    if(consonantChar.containsKey(c)) consonantChar.put(c , consonantChar.get(c) + 1);
+                    else consonantChar.put(c, 1);
                 }
             }
         }
