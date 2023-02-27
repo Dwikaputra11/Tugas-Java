@@ -5,8 +5,8 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in).useDelimiter("\n");;
-        String s = "";
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+        String s;
         System.out.println("1. Cek Palindrome");
         System.out.println("2. Cek Alphabet");
         System.out.print("Pilih: "); int pil = scanner.nextInt();
@@ -17,7 +17,7 @@ public class Main {
 
         switch (pil) {
             case 1 -> {
-                if (isPalindrome(s, 0, s.length() - 1)) System.out.println(s + " adalah palindrome");
+                if (isPalindrome(s.trim(), 0, s.length() - 1)) System.out.println(s + " adalah palindrome");
                 else System.out.println(s + " bukan palindrome");
             }
             case 2 -> checkAlphabetAndSpace(s);
@@ -37,6 +37,8 @@ public class Main {
 
     private static void checkAlphabetAndSpace(String s){
         String vowel    = "aiueoAIUEO";
+        int totalVowel  = 0;
+        int totalCons   = 0;
         int space       = 0;
         Map<Character, Integer> vowelChar        = new HashMap<>();
         Map<Character, Integer> consonantChar    = new HashMap<>();
@@ -44,6 +46,7 @@ public class Main {
         char[] strArray = s.toCharArray();
         for(char c: strArray){
             if(vowel.contains(String.valueOf(c))){
+                totalVowel++;
                 try {
                     vowelChar.put(c , vowelChar.get(c) + 1);
                 }catch (NullPointerException e){
@@ -52,6 +55,7 @@ public class Main {
             }else{
                 if(c == ' ') space++;
                 else{
+                    totalCons++;
                     try {
                         consonantChar.put(c , consonantChar.get(c) + 1);
                     }catch (NullPointerException e){
@@ -61,10 +65,10 @@ public class Main {
             }
         }
 
-        System.out.println("Vowel(" + vowelChar.size() + "): ");
+        System.out.println("Vowel(" + totalVowel + "): ");
         vowelChar.forEach((k , n) -> System.out.println(" -" + k + ": " + n));
 
-        System.out.println("Consonant(" + consonantChar.size() + "): ");
+        System.out.println("Consonant(" + totalCons + "): ");
         consonantChar.forEach((k , n) -> System.out.println(" -" + k + ": " + n));
 
         System.out.println("Spacer: " + space);
